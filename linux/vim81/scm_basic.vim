@@ -15,6 +15,7 @@ function scm_basic#install()
     Plug 'bronson/vim-trailing-whitespace'
     Plug 'Yggdroot/indentLine'
     Plug 'mileszs/ack.vim'
+    Plug 'ludovicchabant/vim-gutentags'
 endfunction
 
 function scm_basic#config()
@@ -26,6 +27,7 @@ function scm_basic#config()
     call s:config_gruvbox()
     call s:config_nerdcommenter()
     call s:config_vim_trailing_whitespace()
+    call s:config_vim_gutentags()
 endfunction
 
 function s:config_nerdcommenter()
@@ -125,4 +127,19 @@ endfunction
 function s:config_vim_trailing_whitespace()
     let g:which_leader.r = 'remove trail space'
     nnoremap <leader>r :FixWhitespace<CR>
+endfunction
+
+function s:config_vim_gutentags()
+    let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg','.project']
+    let g:gutentags_ctags_tagfile = '.tags'
+    let s:vim_tags = expand('~/.cache/tags')
+    let g:gutentags_cache_dir = s:vim_tags
+
+    let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+    let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+    let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+    if !isdirectory(s:vim_tags)
+        silent! call mkdir(s:vim_tags, 'p')
+    endif
 endfunction
