@@ -4,6 +4,7 @@ function scm_cpp_ycm#install()
     Plug 'honza/vim-snippets'
     Plug 'Shougo/echodoc.vim'
     Plug 'rdnetto/YCM-Generator'
+    Plug 'jeaye/color_coded'
     "Plug 'bbchung/clighter8'
 endfunction
 

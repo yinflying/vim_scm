@@ -10,8 +10,6 @@ function scm_core#preconfig_simple()
     set nocp
     set hls
     set tabstop=4 shiftwidth=4 softtabstop=1 expandtab smarttab
-    set listchars=tab:→\ ,nbsp:␣,trail:•,precedes:«,extends:»
-    set list
     set number
     set cc=80
     set cursorline
@@ -19,6 +17,12 @@ function scm_core#preconfig_simple()
     set backspace=indent,eol,start
     set linebreak
     filetype plugin indent on
+    "Auto close quickfix when only left
+    aug QFClose
+        au!
+        au WinEnter * if winnr('$') == 1 &&
+                    \getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+    aug END
 endfunction
 
 function s:config_vim_which_key()

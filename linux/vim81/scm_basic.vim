@@ -1,6 +1,6 @@
 function scm_basic#install()
     Plug 'mhinz/vim-startify'
-    Plug 'lifepillar/vim-solarized8'
+    Plug 'morhetz/gruvbox'
     Plug 'majutsushi/tagbar', { 'on' : ['TagbarToggle'] }
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -14,6 +14,7 @@ function scm_basic#install()
     Plug 'jiangmiao/auto-pairs'
     Plug 'bronson/vim-trailing-whitespace'
     Plug 'Yggdroot/indentLine'
+    Plug 'mileszs/ack.vim'
 endfunction
 
 function scm_basic#config()
@@ -22,7 +23,7 @@ function scm_basic#config()
     call s:config_tagbar()
     call s:config_ctrlp()
     call s:config_rainbow()
-    call s:config_vim_solarized8()
+    call s:config_gruvbox()
     call s:config_nerdcommenter()
     call s:config_vim_trailing_whitespace()
 endfunction
@@ -70,8 +71,10 @@ function s:config_tagbar()
     let g:tagbar_compact=1
 endfunction
 
-function s:config_vim_solarized8()
-    colorscheme solarized8
+function s:config_gruvbox()
+    let g:gruvbox_italic=1
+    colorscheme gruvbox
+    set background=dark
 endfunction
 
 function s:config_vim_airline()
