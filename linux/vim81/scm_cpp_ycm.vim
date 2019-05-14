@@ -5,13 +5,19 @@ function scm_cpp_ycm#install()
     Plug 'Shougo/echodoc.vim'
     Plug 'rdnetto/YCM-Generator'
     Plug 'jeaye/color_coded'
-    "Plug 'bbchung/clighter8'
+    Plug 'vim-scripts/a.vim'
+    Plug 'gauteh/vim-cppman'
+    Plug 'vhdirk/vim-cmake'
+    Plug 'Chiel92/vim-autoformat'
 endfunction
 
 function scm_cpp_ycm#config()
     call s:config_youcompleteme()
     call s:config_ultisnips()
     call s:config_echodoc_vim()
+    call s:config_vim_cppman()
+    call s:config_vim_cmake()
+    call s:config_vim_autoformat()
 endfunction
 
 function s:config_youcompleteme()
@@ -24,6 +30,15 @@ function s:config_youcompleteme()
     let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_autoclose_preview_window_after_insertion = 1
     let g:ycm_confirm_extra_conf = 0
+    let g:ycm_complete_in_comments = 1
+    let g:ycm_min_num_of_chars_for_completion=2
+    let g:ycm_seed_identifiers_with_syntax = 1
+
+    let g:which_leader.g = { 'name': '+Ycm' }
+    nnoremap <leader>gC :YcmCompleter GoToDeclaration<CR>
+    nnoremap <leader>gF :YcmCompleter GoToDefinition<CR>
+    nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    let g:ycm_key_detailed_diagnostics = '<leader>gD'
 endfunction
 
 function s:config_ultisnips()
@@ -63,7 +78,29 @@ function s:config_ultisnips()
 endfunction
 
 function s:config_echodoc_vim()
+    let g:echodoc#enable_at_startup=1
     set noshowmode
     set cmdheight=1
-    let g:echodoc#enable_at_startup=1
+endfunction
+
+function s:config_vim_cppman()
+    setl iskeyword=@,48-57,_,192-255,:
+endfunction
+
+function s:config_vim_cmake()
+    let g:which_leader.M = { 'name': '+CMake/make',
+                \ 'c' : 'Run cmake ../ under cloest build dir',
+                \ 'm' : 'Run make',
+                \ 'r' : 'Clean all under build dir',
+                \ 'f' : 'Find Buid Dir' }
+    nnoremap <leader>Mc :CMake<CR>
+    nnoremap <leader>Mm :make<CR>
+    nnoremap <leader>Mr :CMakeClean<CR>
+    nnoremap <leader>Mf :CMakeFindBuildDir<CR>
+    let g:cmake_ycm_symlinks = 1
+endfunction
+
+function s:config_vim_autoformat()
+    let g:which_leader.F =  'Auto Format'
+    noremap <leader>F :Autoformat<CR>
 endfunction

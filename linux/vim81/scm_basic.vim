@@ -1,7 +1,6 @@
 function scm_basic#install()
     Plug 'mhinz/vim-startify'
     Plug 'morhetz/gruvbox'
-    Plug 'majutsushi/tagbar', { 'on' : ['TagbarToggle'] }
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP'] }
@@ -15,22 +14,20 @@ function scm_basic#install()
     Plug 'bronson/vim-trailing-whitespace'
     Plug 'Yggdroot/indentLine'
     Plug 'mileszs/ack.vim'
-    Plug 'ludovicchabant/vim-gutentags'
 endfunction
 
 function scm_basic#config()
     call s:config_vim_airline()
     call s:config_nerdtree()
-    call s:config_tagbar()
     call s:config_ctrlp()
     call s:config_rainbow()
     call s:config_gruvbox()
     call s:config_nerdcommenter()
     call s:config_vim_trailing_whitespace()
-    call s:config_vim_gutentags()
 endfunction
 
 function s:config_nerdcommenter()
+    let g:NERDTreeQuitOnOpen = 1
     let g:which_leader.c = { 'name': '+Commmenter',
                 \ 'c': 'Comment current line',
                 \ 'n': 'Commnet current line and force nesting',
@@ -62,16 +59,6 @@ function s:config_ctrlp()
       \ }
 endfunction
 
-function s:config_tagbar()
-    let g:which_leader.t = 'TagBar'
-    nnoremap <leader>t :TagbarToggle<CR>
-
-    let g:tagbar_left=0
-    let g:tagbar_width=30
-    let g:tagbar_autoclose=1
-    let g:tagbar_autofocus=1
-    let g:tagbar_compact=1
-endfunction
 
 function s:config_gruvbox()
     let g:gruvbox_italic=1
@@ -127,19 +114,4 @@ endfunction
 function s:config_vim_trailing_whitespace()
     let g:which_leader.r = 'remove trail space'
     nnoremap <leader>r :FixWhitespace<CR>
-endfunction
-
-function s:config_vim_gutentags()
-    let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg','.project']
-    let g:gutentags_ctags_tagfile = '.tags'
-    let s:vim_tags = expand('~/.cache/tags')
-    let g:gutentags_cache_dir = s:vim_tags
-
-    let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-    let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-    let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
-    if !isdirectory(s:vim_tags)
-        silent! call mkdir(s:vim_tags, 'p')
-    endif
 endfunction
