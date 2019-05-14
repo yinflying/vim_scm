@@ -14,6 +14,7 @@ function scm_config_simple#config()
     set nowrap
     filetype plugin indent on
     call s:central_tmpfile($HOME."/.cache/scm_vim/")
+    call s:config_map()
 endfunction
 
 function s:central_tmpfile(tmpdir)
@@ -32,4 +33,9 @@ function s:central_tmpfile(tmpdir)
     if !isdirectory(a:tmpdir."/swapdir")
         call mkdir(a:tmpdir."/swapdir","p")
     endif
+endfunction
+
+function s:config_map()
+    nnoremap <leader>y "+y
+    vnoremap <leader>p "+p
 endfunction
