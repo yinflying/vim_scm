@@ -33,6 +33,8 @@ function s:config_youcompleteme()
     let g:ycm_complete_in_comments = 1
     let g:ycm_min_num_of_chars_for_completion=2
     let g:ycm_seed_identifiers_with_syntax = 1
+    let g:ycm_global_ycm_extra_conf=
+    \'~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 
     let g:which_leader.g = { 'name': '+Ycm' }
     nnoremap <leader>gC :YcmCompleter GoToDeclaration<CR>
@@ -84,7 +86,8 @@ function s:config_echodoc_vim()
 endfunction
 
 function s:config_vim_cppman()
-    setl iskeyword=@,48-57,_,192-255,:
+    "Solve auto-pairs&ycm bug: should NOT contain '[',']' as keyword
+    au FileType c,cpp setl iskeyword=@,48-57,_,192-255,:
 endfunction
 
 function s:config_vim_cmake()

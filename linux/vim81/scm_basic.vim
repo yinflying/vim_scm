@@ -24,6 +24,7 @@ function scm_basic#config()
     call s:config_gruvbox()
     call s:config_nerdcommenter()
     call s:config_vim_trailing_whitespace()
+    call s:config_auto_pairs()
 endfunction
 
 function s:config_nerdcommenter()
@@ -114,4 +115,7 @@ endfunction
 function s:config_vim_trailing_whitespace()
     let g:which_leader.r = 'remove trail space'
     nnoremap <leader>r :FixWhitespace<CR>
+endfunction
+
+function s:config_auto_pairs()
 endfunction
