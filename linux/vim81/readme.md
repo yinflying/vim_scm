@@ -10,3 +10,4 @@
 | Shortcut | Deskcription |
 | ---- | ----- |
 
+# `scm_basic.vim`

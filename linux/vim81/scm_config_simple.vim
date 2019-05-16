@@ -15,6 +15,7 @@ function scm_config_simple#config()
     filetype plugin indent on
     call s:central_tmpfile($HOME."/.cache/scm_vim/")
     call s:config_map()
+    call s:config_session()
 endfunction
 
 function s:central_tmpfile(tmpdir)
@@ -38,4 +39,10 @@ endfunction
 function s:config_map()
     nnoremap <leader>y "+y
     vnoremap <leader>p "+p
+endfunction
+
+function s:config_session()
+    nnoremap <leader>S :mksession!<CR>
+    "Sesson only save buffers,current direcotry,folds,windows size,terminal
+    set sessionoptions=buffers,curdir,folds,tabpages,winsize,terminal
 endfunction
