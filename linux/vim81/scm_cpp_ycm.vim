@@ -35,6 +35,8 @@ function s:config_youcompleteme()
     let g:ycm_seed_identifiers_with_syntax = 1
     let g:ycm_global_ycm_extra_conf=
     \'~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+    let g:ycm_max_num_candidates = 15
+    let g:ycm_max_num_identifier_candidates = 15
 
     let g:which_leader.g = { 'name': '+Ycm' }
     nnoremap <leader>gC :YcmCompleter GoToDeclaration<CR>
