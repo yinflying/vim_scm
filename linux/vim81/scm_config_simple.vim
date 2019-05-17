@@ -39,8 +39,8 @@ function s:central_tmpfile(tmpdir)
 endfunction
 
 function s:config_map()
-    nnoremap <leader>y "+y
-    vnoremap <leader>p "+p
+    vnoremap <leader>y "+y
+    nnoremap <leader>p "+p
 endfunction
 
 function s:config_session()
