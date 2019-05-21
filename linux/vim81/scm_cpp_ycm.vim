@@ -8,6 +8,7 @@ function scm_cpp_ycm#install()
     Plug 'vim-scripts/a.vim'
     Plug 'gauteh/vim-cppman'
     Plug 'vhdirk/vim-cmake'
+    Plug 'pboettch/vim-cmake-syntax'
     Plug 'Chiel92/vim-autoformat'
 endfunction
 
@@ -22,6 +23,7 @@ function scm_cpp_ycm#config()
     call s:config_vim_better_whitespace()
     call s:config_indentline()
     call s:config_ycm_generator()
+    call s:config_vim_camke_syntax()
 endfunction
 
 function s:config_youcompleteme()
@@ -134,4 +136,13 @@ function s:config_ycm_generator()
                 \ 'D' : 'Generate Color_code config'}
     nnoremap <leader>gY :YcmGenerateConfig<CR>
     nnoremap <leader>gD :CCGenerateConfig<CR>
+endfunction
+
+function s:config_vim_camke_syntax()
+    " Disable rainbow for cmake(conflict)
+    let g:rainbow_conf = {
+    \   'separately': {
+    \       'cmake': 0,
+    \   }
+    \}
 endfunction
