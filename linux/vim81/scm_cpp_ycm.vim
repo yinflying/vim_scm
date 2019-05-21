@@ -130,7 +130,7 @@ function s:config_indentline()
 endfunction
 
 function s:config_ycm_generator()
-    let g:which_leader.g = { 'Y': 'Generate Ycm config' , 
+    let g:which_leader.g = { 'Y': 'Generate Ycm config' ,
                 \ 'D' : 'Generate Color_code config'}
     nnoremap <leader>gY :YcmGenerateConfig<CR>
     nnoremap <leader>gD :CCGenerateConfig<CR>
