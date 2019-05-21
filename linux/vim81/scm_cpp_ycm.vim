@@ -18,6 +18,10 @@ function scm_cpp_ycm#config()
     call s:config_vim_cppman()
     call s:config_vim_cmake()
     call s:config_vim_autoformat()
+    call s:config_auto_pairs()
+    call s:config_vim_better_whitespace()
+    call s:config_indentline()
+    call s:config_ycm_generator()
 endfunction
 
 function s:config_youcompleteme()
@@ -106,6 +110,28 @@ function s:config_vim_cmake()
 endfunction
 
 function s:config_vim_autoformat()
+    au FileType c,cpp setlocal textwidth=80
     let g:which_leader.F =  'Auto Format'
     noremap <leader>F :Autoformat<CR>
+endfunction
+
+function s:config_auto_pairs()
+    autocmd FileType c,cpp let b:AutoPairs=
+    \{'(':')', '[':']', '{':'}',"'":"'",'"':'"', '/*':'*/' }
+endfunction
+
+function s:config_vim_better_whitespace()
+    autocmd FileType c,cpp EnableWhitespace
+    autocmd FileType c,cpp EnableStripWhitespaceOnSave
+endfunction
+
+function s:config_indentline()
+    autocmd FileType c,cpp IndentLinesEnable
+endfunction
+
+function s:config_ycm_generator()
+    let g:which_leader.g = { 'Y': 'Generate Ycm config' , 
+                \ 'D' : 'Generate Color_code config'}
+    nnoremap <leader>gY :YcmGenerateConfig<CR>
+    nnoremap <leader>gD :CCGenerateConfig<CR>
 endfunction

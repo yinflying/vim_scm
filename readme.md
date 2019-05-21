@@ -7,7 +7,7 @@ versions and platforms. It keeps simple frame nearly do nothing! (:D)
 wortten by functions to be more clear.
 
 Anyway, `vim-scm` is simple vim configuration manager, and users could use subsets
-directly, it is both simple to use and share your configuration
+directly, it is both simple to use and share your configuration.
 
 Only linux/vim8.1 are well tested(becase it's my platform, and I use the the
 configuration daily), if the repo configuration do not meet your requirement
@@ -34,6 +34,8 @@ And then open the vim(some error will appear, ignore them) and type:
 ```
 it will load `scm_config_simple.vim` , `scm_core.vim` and `scm_basic.vim` and
 then install plugin and some configuration
+
+## linux user
 
 # End
 Actullay, `vim-scm` is inspired by the `layer` concept of `Spacevim`, however,

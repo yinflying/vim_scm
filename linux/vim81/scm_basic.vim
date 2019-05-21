@@ -11,9 +11,10 @@ function scm_basic#install()
     Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
     Plug 'scrooloose/nerdcommenter'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'bronson/vim-trailing-whitespace'
+    Plug 'ntpeters/vim-better-whitespace'
     Plug 'Yggdroot/indentLine'
     Plug 'mileszs/ack.vim'
+    Plug 'Konfekt/FastFold'
 endfunction
 
 function scm_basic#config()
@@ -23,8 +24,9 @@ function scm_basic#config()
     call s:config_rainbow()
     call s:config_gruvbox()
     call s:config_nerdcommenter()
-    call s:config_vim_trailing_whitespace()
+    call s:config_vim_better_whitespace()
     call s:config_auto_pairs()
+    call s:config_indentline()
 endfunction
 
 function s:config_nerdcommenter()
@@ -52,11 +54,9 @@ function s:config_ctrlp()
     nnoremap <C-P> :CtrlP<CR>
     set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
-    let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
     let g:ctrlp_custom_ignore = {
       \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-      \ 'file': '\v\.(exe|so|dll)$',
-      \ 'link': 'some_bad_symbolic_links',
+      \ 'file': '\v\.(so|o)$'
       \ }
 endfunction
 
@@ -112,10 +112,28 @@ function! s:NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
                \ .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-function s:config_vim_trailing_whitespace()
-    let g:which_leader.r = 'remove trail space'
-    nnoremap <leader>r :FixWhitespace<CR>
+function s:config_vim_better_whitespace()
+    let g:better_whitespace_ctermcolor='208'
+    let g:better_whitespace_enabled=0
+    let g:strip_whitespace_on_save=0
+    let g:which_leader.R = { 'name': '+Strip_White_Space',
+                \ 'r' : 'remove all white strip',
+                \ 't' : 'Turn on/off hightlight trail space',
+                \ 'w' : 'Turn on/off auto remove trail space on save',
+                \ 'n' : 'Navigate to next trail space',
+                \ 'p' : 'Navigate to previous tail space'
+                \}
+    nnoremap <leader>Rr :StripWhitespace<CR>
+    nnoremap <leader>Rt :ToggleWhitespace<CR>
+    nnoremap <leader>Rw :ToggleStripWhitespaceOnSave<CR>
+    nnoremap <leader>Rn :NextTrailingWhitespace<CR>
+    nnoremap <leader>Rp :PrevTrailingWhitespace<CR>
 endfunction
 
 function s:config_auto_pairs()
+endfunction
+
+function s:config_indentline()
+    let g:indentLine_enabled = 0
+    nnoremap <leader>I :IndentLinesToggle<CR>
 endfunction
