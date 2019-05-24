@@ -72,7 +72,7 @@ function bob_own#config()
 endfunction
 ```
 And then you should add `Scmsource ~/.vim/vim_scm/bob_own.vim` before 
-`Call scm#plug('~/.vim/plugged')`
+`Call scm#plug('~/.vim/plugged')` in vim config file `~/.vimrc`.
 
 After do that, reopen your vim and Type `:PlugInstall` to install the plugin 
 with your own configuration
