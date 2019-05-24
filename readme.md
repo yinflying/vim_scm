@@ -56,7 +56,7 @@ Scmsource ~/.vim/vim_scm/linux/vim81/scm_basic.vim
 call scm#plug('~/.vim/plugged')
 ```
 
-# Install Personal plugins(Or create personal layer scripts)
+# Install Personal plugins(or create personal layer scripts)
 If you want to install your own plugins. you could create a vim script file 
 such as: `~/.vim/vim_scm/bob_own.vim`, and then put two functions under the file
 :
@@ -68,7 +68,7 @@ function bob_own#install()
 endfunction
 
 function bob_own#config()
-    "Put your congiration for the plugin
+    "Put your configuration for the plugin
 endfunction
 ```
 And then you should add `Scmsource ~/.vim/vim_scm/bob_own.vim` before 
