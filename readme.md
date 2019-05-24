@@ -28,12 +28,15 @@ Scmsource ~/.vim/vim_scm/linux/vim81/scm_core.vim
 Scmsource ~/.vim/vim_scm/linux/vim81/scm_basic.vim
 call scm#plug('~/.vim/plugged')
 ```
+NOTE: If you have some own configuration under `~/.vimrc`, you'd better remove
+them all(And then add them after scm script working).
+
 And then open the vim(some error will appear, ignore them) and type:
 ```
 :PlugInstall
 ```
 it will load `scm_config_simple.vim` , `scm_core.vim` and `scm_basic.vim` and
-then install plugin and some configuration
+then install some plugins with configuration.
 
 ## linux user
 As a linux user, you only need to run command as fellow:
