@@ -56,7 +56,7 @@ Scmsource ~/.vim/vim_scm/linux/vim81/scm_basic.vim
 call scm#plug('~/.vim/plugged')
 ```
 
-# Install my own plugins
+# Install Personal plugins(Or create personal layer scripts)
 If you want to install your own plugins. you could create a vim script file 
 such as: `~/.vim/vim_scm/bob_own.vim`, and then put two functions under the file
 :
@@ -75,7 +75,7 @@ And then you should add `Scmsource ~/.vim/vim_scm/bob_own.vim` before
 `Call scm#plug('~/.vim/plugged')`
 
 After do that, reopen your vim and Type `:PlugInstall` to install the plugin 
-whth your own configuration
+with your own configuration
 
 # End
 Actullay, `vim-scm` is inspired by the `layer` concept of `Spacevim`, however,
