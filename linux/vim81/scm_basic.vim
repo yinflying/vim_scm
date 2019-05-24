@@ -116,6 +116,7 @@ function s:config_vim_better_whitespace()
     let g:better_whitespace_ctermcolor='208'
     let g:better_whitespace_enabled=0
     let g:strip_whitespace_on_save=0
+    let g:strip_whitespace_confirm=0
     let g:which_leader.R = { 'name': '+Strip_White_Space',
                 \ 'r' : 'remove all white strip',
                 \ 't' : 'Turn on/off hightlight trail space',

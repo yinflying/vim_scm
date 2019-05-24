@@ -36,6 +36,22 @@ it will load `scm_config_simple.vim` , `scm_core.vim` and `scm_basic.vim` and
 then install plugin and some configuration
 
 ## linux user
+As a linux user, you only need to run command as fellow:
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+cd ~/.vim
+git clone https://github.com/yinflying/vim-scm.git
+```
+and then put the configration as fellow to `~/.vimrc`:
+```
+let g:mapleader=','
+source ~/.vim/vim_scm/scm.vim
+Scmsource ~/.vim/vim_scm/linux/vim81/scm_config_simple.vim
+Scmsource ~/.vim/vim_scm/linux/vim81/scm_core.vim
+Scmsource ~/.vim/vim_scm/linux/vim81/scm_basic.vim
+call scm#plug('~/.vim/plugged')
+```
 
 # End
 Actullay, `vim-scm` is inspired by the `layer` concept of `Spacevim`, however,
