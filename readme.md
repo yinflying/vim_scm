@@ -38,13 +38,13 @@ And then open the vim(some error will appear, ignore them) and type:
 it will load `scm_config_simple.vim` , `scm_core.vim` and `scm_basic.vim` and
 then install some plugins with configuration.
 
-## linux user
+## linux user(vim)
 As a linux user, you only need to run command as fellow:
 ```
 $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
              https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 $ cd ~/.vim
-$ git clone https://github.com/yinflying/vim-scm.git
+$ git clone https://github.com/yinflying/vim_scm.git
 ```
 and then put the configration as fellow to `~/.vimrc`:
 ```
@@ -54,6 +54,28 @@ Scmsource ~/.vim/vim_scm/linux/vim81/scm_config_simple.vim
 Scmsource ~/.vim/vim_scm/linux/vim81/scm_core.vim
 Scmsource ~/.vim/vim_scm/linux/vim81/scm_basic.vim
 call scm#plug('~/.vim/plugged')
+```
+
+## linux user(neovim)
+As a linux user, you only need to run command as fellow:
+```
+$ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+$ cd ~/.config/nvim
+$ git clone https://github.com/yinflying/vim_scm.git
+```
+and then put the configration as fellow to `~/.config/nvim/init.vim`:
+```
+let mapleader = ','
+
+source ~/.config/nvim/vim_scm/scm.vim
+Scmsource ~/.config/nvim/vim_scm/linux/vim81/scm_core.vim
+Scmsource ~/.config/nvim/vim_scm/personal/condy_nvim/scm_simple_config.vim
+Scmsource ~/.config/nvim/vim_scm/personal/condy_nvim/scm_basic.vim
+Scmsource ~/.config/nvim/vim_scm/personal/condy_nvim/scm_cpp.vim
+Scmsource ~/.config/nvim/vim_scm/personal/condy_nvim/scm_rust.vim
+
+call scm#plug('~/.config/nvim/plugged')
 ```
 
 # Install Personal plugins(or create personal layer scripts)
