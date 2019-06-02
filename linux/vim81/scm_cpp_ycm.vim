@@ -2,14 +2,14 @@ function scm_cpp_ycm#install()
     Plug 'Valloric/YouCompleteMe',{ 'do': './install.py --clang-completer' }
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
-    Plug 'Shougo/echodoc.vim'
+    Plug 'Shougo/echodoc.vim',{'on_ft' : ['c', 'cpp']}
     Plug 'rdnetto/YCM-Generator'
     Plug 'jeaye/color_coded'
     Plug 'vim-scripts/a.vim'
     Plug 'gauteh/vim-cppman'
     Plug 'vhdirk/vim-cmake'
     Plug 'pboettch/vim-cmake-syntax'
-    Plug 'Chiel92/vim-autoformat'
+    Plug 'Chiel92/vim-autoformat',{'on_ft' : ['c','cpp']}
     Plug 'daidodo/DoxygenToolkit.vim',{'on_ft' : ['c','cpp']}
 endfunction
 
@@ -48,7 +48,7 @@ function s:config_youcompleteme()
 
     let l:ycm_key_doc = { 'name': '+Ycm',
                 \ 'G' : 'go to declearation',
-                \ 'I' : 'go to somewhere(guess)', 
+                \ 'I' : 'go to somewhere(guess)',
                 \ 'H' : 'go to header file',
                 \ 'A' : 'Ycm Diagnostics',
                 \ 'T' : 'Get Type',
@@ -147,7 +147,7 @@ function s:config_indentline()
 endfunction
 
 function s:config_ycm_generator()
-    let l:ycm_gen_key_doc = {'name' : '+GenYcm', 
+    let l:ycm_gen_key_doc = {'name' : '+GenYcm',
                 \'1': 'Generate Ycm configuration(.ycm_extra_conf)',
                 \'2': 'Generate Color coded configuration(.color_coded)'
                 \}
