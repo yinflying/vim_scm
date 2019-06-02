@@ -10,6 +10,7 @@ function scm_cpp_ycm#install()
     Plug 'vhdirk/vim-cmake'
     Plug 'pboettch/vim-cmake-syntax'
     Plug 'Chiel92/vim-autoformat'
+    Plug 'daidodo/DoxygenToolkit.vim',{'on_ft' : ['c','cpp']}
 endfunction
 
 function scm_cpp_ycm#config()
@@ -24,6 +25,7 @@ function scm_cpp_ycm#config()
     call s:config_indentline()
     call s:config_ycm_generator()
     call s:config_vim_camke_syntax()
+    call s:config_doxygentoolkit_vim()
 endfunction
 
 function s:config_youcompleteme()
@@ -44,11 +46,24 @@ function s:config_youcompleteme()
     let g:ycm_max_num_candidates = 15
     let g:ycm_max_num_identifier_candidates = 15
 
-    let g:which_leader.g = { 'name': '+Ycm' }
-    nnoremap <leader>gC :YcmCompleter GoToDeclaration<CR>
-    nnoremap <leader>gF :YcmCompleter GoToDefinition<CR>
-    nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-    let g:ycm_key_detailed_diagnostics = '<leader>gD'
+    let l:ycm_key_doc = { 'name': '+Ycm',
+                \ 'G' : 'go to declearation',
+                \ 'I' : 'go to somewhere(guess)', 
+                \ 'H' : 'go to header file',
+                \ 'A' : 'Ycm Diagnostics',
+                \ 'T' : 'Get Type',
+                \ 'D' : 'Get Doc',
+                \ 'P' : 'Get Parent'
+                \}
+    call scm#merge_list('g:which_leader.g',l:ycm_key_doc)
+
+    nnoremap <leader>gG :YcmCompleter GoToDeclaration<CR>
+    nnoremap <leader>gI :YcmCompleter GoToImprecise<CR>
+    nnoremap <leader>gH :YcmCompleter GoToInclude<CR>
+    nnoremap <leader>gT :YcmCompleter GetType<CR>
+    nnoremap <leader>gP :YcmCompleter GetParent<CR>
+    nnoremap <leader>gD :YcmCompleter GetDoc<CR>
+    let g:ycm_key_detailed_diagnostics = '<leader>gA'
 endfunction
 
 function s:config_ultisnips()
@@ -119,7 +134,7 @@ endfunction
 
 function s:config_auto_pairs()
     autocmd FileType c,cpp let b:AutoPairs=
-    \{'(':')', '[':']', '{':'}',"'":"'",'"':'"', '/*':'*/' }
+    \{'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 endfunction
 
 function s:config_vim_better_whitespace()
@@ -132,10 +147,13 @@ function s:config_indentline()
 endfunction
 
 function s:config_ycm_generator()
-    let g:which_leader.g = { 'Y': 'Generate Ycm config' ,
-                \ 'D' : 'Generate Color_code config'}
-    nnoremap <leader>gY :YcmGenerateConfig<CR>
-    nnoremap <leader>gD :CCGenerateConfig<CR>
+    let l:ycm_gen_key_doc = {'name' : '+GenYcm', 
+                \'1': 'Generate Ycm configuration(.ycm_extra_conf)',
+                \'2': 'Generate Color coded configuration(.color_coded)'
+                \}
+    call scm#merge_list('g:which_leader.g.Y',l:ycm_gen_key_doc)
+    nnoremap <leader>gY1 :YcmGenerateConfig<CR>
+    nnoremap <leader>gY2 :CCGenerateConfig<CR>
 endfunction
 
 function s:config_vim_camke_syntax()
@@ -145,4 +163,7 @@ function s:config_vim_camke_syntax()
     \       'cmake': 0,
     \   }
     \}
+endfunction
+
+function s:config_doxygentoolkit_vim()
 endfunction

@@ -31,7 +31,7 @@ endfunction
 
 function s:config_nerdcommenter()
     let g:NERDTreeQuitOnOpen = 1
-    let g:which_leader.c = { 'name': '+Commmenter',
+    let l:nerd_key_doc = { 'name': '+Commmenter',
                 \ 'c': 'Comment current line',
                 \ 'n': 'Commnet current line and force nesting',
                 \ 'm': 'Comments with one set of multipart delimiters',
@@ -44,6 +44,7 @@ function s:config_nerdcommenter()
                 \ 'l': 'Comment delimiters aligned left side',
                 \ 'b': 'Comment delimiters aligned both side',
                 \ 'u': 'Uncomment' }
+    call scm#merge_list('g:which_leader.c',l:nerd_key_doc)
 endfunction
 
 function s:config_rainbow()
@@ -117,18 +118,19 @@ function s:config_vim_better_whitespace()
     let g:better_whitespace_enabled=0
     let g:strip_whitespace_on_save=0
     let g:strip_whitespace_confirm=0
-    let g:which_leader.R = { 'name': '+Strip_White_Space',
+    nnoremap <leader>Rr :StripWhitespace<CR>
+    nnoremap <leader>Rt :ToggleWhitespace<CR>
+    nnoremap <leader>Rw :ToggleStripWhitespaceOnSave<CR>
+    nnoremap <leader>Rn :NextTrailingWhitespace<CR>
+    nnoremap <leader>Rp :PrevTrailingWhitespace<CR>
+    let l:vb_key_doc = { 'name': '+Strip_White_Space',
                 \ 'r' : 'remove all white strip',
                 \ 't' : 'Turn on/off hightlight trail space',
                 \ 'w' : 'Turn on/off auto remove trail space on save',
                 \ 'n' : 'Navigate to next trail space',
                 \ 'p' : 'Navigate to previous tail space'
                 \}
-    nnoremap <leader>Rr :StripWhitespace<CR>
-    nnoremap <leader>Rt :ToggleWhitespace<CR>
-    nnoremap <leader>Rw :ToggleStripWhitespaceOnSave<CR>
-    nnoremap <leader>Rn :NextTrailingWhitespace<CR>
-    nnoremap <leader>Rp :PrevTrailingWhitespace<CR>
+    call scm#merge_list('g:which_leader.R',l:vb_key_doc)
 endfunction
 
 function s:config_auto_pairs()

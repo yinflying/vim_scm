@@ -42,7 +42,7 @@ function s:config_gutentags_plus()
     let g:gutentags_plus_switch = 1
     let g:gutentags_plus_nomap = 1
     noremap <silent> <leader>gs :GscopeFind s <C-R><C-W><cr>
-    noremap <silent> <leader>gG :GscopeFind g <C-R><C-W><cr>
+    noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>
     noremap <silent> <leader>gc :GscopeFind c <C-R><C-W><cr>
     noremap <silent> <leader>gt :GscopeFind t <C-R><C-W><cr>
     noremap <silent> <leader>ge :GscopeFind e <C-R><C-W><cr>
@@ -50,9 +50,10 @@ function s:config_gutentags_plus()
     noremap <silent> <leader>gi :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
     noremap <silent> <leader>gd :GscopeFind d <C-R><C-W><cr>
     noremap <silent> <leader>ga :GscopeFind a <C-R><C-W><cr>
-    let g:which_leader.g = { 'name': '+GtagsFind',
+
+    let l:gtags_key_doc = { 'name': '+GtagsFind',
                 \ 's' : 'Find this symbol',
-                \ 'G' : 'Find this definition',
+                \ 'g' : 'Find this definition',
                 \ 'd' : 'Find funs called by this fun',
                 \ 'c' : 'Find funs calling this fun',
                 \ 't' : 'Find this text string',
@@ -61,4 +62,5 @@ function s:config_gutentags_plus()
                 \ 'i' : 'Find files #include this files',
                 \ 'a' : 'Find places where assigned a value'
                 \}
+    call scm#merge_list('g:which_leader.g',l:gtags_key_doc)
 endfunction

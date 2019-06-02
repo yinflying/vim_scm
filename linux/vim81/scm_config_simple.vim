@@ -5,7 +5,7 @@ endfunction
 function scm_config_simple#config()
     set nocp
     set hls
-    set tabstop=4 shiftwidth=4 softtabstop=1 expandtab smarttab
+    set tabstop=4 shiftwidth=4 softtabstop=4 expandtab smarttab
     set autoindent smartindent cindent
     set smartcase
     set number
