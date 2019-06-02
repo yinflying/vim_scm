@@ -19,3 +19,11 @@ function scm#plug(plug_dir)
         exec 'call '.plug_name.'#config()'
     endfor
 endfunction
+
+function scm#merge_list(dest_name, src_list)
+    if exists(a:dest_name)
+        exec 'let '.a:dest_name.' = extend('.a:dest_name.',a:src_list)'
+    else
+        exec 'let '.a:dest_name.' = a:src_list'
+    end
+endfunction
