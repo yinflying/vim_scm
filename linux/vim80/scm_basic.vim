@@ -62,7 +62,12 @@ endfunction
 
 
 function s:config_gruvbox()
-    let g:gruvbox_italic=1
+    if !exists('g:gruvbox_italic')
+        let g:gruvbox_italic = 0
+    endif
+    if !exists('g:gruvbox_bold')
+        let g:gruvbox_bold = 0
+    endif
     colorscheme gruvbox
     set background=dark
 endfunction
