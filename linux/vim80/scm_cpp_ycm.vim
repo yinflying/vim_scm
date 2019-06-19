@@ -138,8 +138,12 @@ function s:config_auto_pairs()
 endfunction
 
 function s:config_vim_better_whitespace()
-    autocmd FileType c,cpp EnableWhitespace
-    autocmd FileType c,cpp EnableStripWhitespaceOnSave
+    if exists('g:cpp_enable_whitespace') && g:cpp_enable_whitespace == 0
+        return
+    else
+        autocmd FileType c,cpp EnableWhitespace
+        autocmd FileType c,cpp EnableStripWhitespaceOnSave
+    endif
 endfunction
 
 function s:config_indentline()
