@@ -48,7 +48,14 @@ function s:auto_close_quickfix()
 endfunction
 
 function s:config_map()
+    " Map for System clipboard
     vnoremap <leader>y "+y
     nnoremap <leader>p "+p
+
+    " Map for vim session
     nnoremap <leader>S :mksession!<CR>
+    " Solve vim-which-key do not work when open vim session file
+    set sessionoptions=blank,buffers,tabpages,resize,winsize,unix,slash
+    " :Q save current session and exit
+    command -nargs=0 Q :mksession! | qa
 endfunction
