@@ -40,11 +40,25 @@ function s:config_youcompleteme()
     let g:ycm_confirm_extra_conf = 0
     let g:ycm_complete_in_comments = 1
     let g:ycm_min_num_of_chars_for_completion=2
+    let g:ycm_min_num_identifier_candidate_chars = 2
     let g:ycm_seed_identifiers_with_syntax = 1
     let g:ycm_global_ycm_extra_conf=
     \'~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
     let g:ycm_max_num_candidates = 15
     let g:ycm_max_num_identifier_candidates = 15
+    let g:ycm_auto_trigger = 1
+
+    let g:ycm_filetype_blacklist = {
+                \ 'tagbar': 1,
+                \ 'notes': 1,
+                \ 'netrw': 1,
+                \ 'unite': 1,
+                \ 'text': 1,
+                \ 'vimwiki': 1,
+                \ 'pandoc': 1,
+                \ 'infolog': 1,
+                \ 'mail': 1
+                \}
 
     let l:ycm_key_doc = { 'name': '+Ycm',
                 \ 'G' : 'go to declearation',

@@ -14,7 +14,7 @@ configuration daily), if the repo configuration do not meet your requirement
 (of course, almost not) you may create your personal configuration under scm frame.
 (it is a simple thing), and commit Pull request.
 
-# install and usage
+# Common Install Method and Usage
 `vim-scm` use [vim-plug](https://github.com/junegunn/vim-plug) as vim plugin
 manager. we should install it first.
 
@@ -38,7 +38,7 @@ And then open the vim(some error will appear, ignore them) and type:
 it will load `scm_config_simple.vim` , `scm_core.vim` and `scm_basic.vim` and
 then install some plugins with configuration.
 
-## linux user(vim)
+## Fast Install for linux(vim)
 As a linux user, you only need to run command as fellow:
 ```
 $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -56,7 +56,7 @@ Scmsource ~/.vim/vim_scm/linux/vim81/scm_basic.vim
 call scm#plug('~/.vim/plugged')
 ```
 
-## linux user(neovim)
+## Fast Install for linux user(neovim)
 As a linux user, you only need to run command as fellow:
 ```
 $ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
